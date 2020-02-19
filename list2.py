@@ -1,3 +1,5 @@
+# Had help with cohort members
+
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
@@ -23,8 +25,15 @@ Kenzie assignment: List2
 
 
 def remove_adjacent(nums):
-    # your code here
-    return
+    copy_list = nums[:]
+    new_list = []
+    for i in copy_list:
+        if (len(new_list) == 0) or (new_list[-1] != i):
+            new_list.append(i)
+            continue
+        else:
+            continue
+    return new_list
 
 
 # E. Given two lists sorted in increasing order, create and return a merged
@@ -33,7 +42,14 @@ def remove_adjacent(nums):
 # Hint: Don't use `sort` or `sorted` -- they are not O(n) linear time, and the two lists
 # are already provided in ascending sorted order.
 def linear_merge(list1, list2):
-    # your code here
+    result = []
+    while list1 and list2:
+        result.append((list1 if list1[-1] > list2[-1] else list2).pop(-1))
+    if len(list1):
+        result += list1[-1::-1]
+    if len(list2):
+        result += list2[-1::-1]
+    return result[-1::-1]
     return
 
 
